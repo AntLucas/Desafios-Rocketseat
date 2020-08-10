@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Curso Javascript</title>
+  </head>
+  <body>
+    <div id="app">
+      <button class="button">Adicionar</button>
+    </div>
+
+    <script>
+      var btnElement = document.querySelector(".button");
+      let count = 1;
+
+      btnElement.onclick = () => {
+        // cria um novo elemento box
+        let boxElement = document.createElement("div");
+        boxElement.style.widht = 100;
+        boxElement.style.height = 100;
+        boxElement.style.margin = 10;
+        boxElement.style.backgroundColor = "#f00";
+        boxElement.className = "box";
+        boxElement.id = "box-" + count;
+
+        boxElement.addEventListener("mouseover", () => {
+          let newColor = getRandomColor();
+
+          console.log(boxElement.id + ": " + newColor);
+          boxElement.style.backgroundColor = newColor;
+        });
+        //adiciona um novo elemento box para app
+        document.getElementById("app").appendChild(boxElement);
+        count++;
+      };
+
+      function getRandomColor() {
+        var color = "#" + Math.floor(Math.random() * 0xffffff).toString(16);
+        return color;
+      }
+    </script>
+  </body>
+</html>

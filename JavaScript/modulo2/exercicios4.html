@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Curso Javascript</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" name="nome" class="input" />
+      <button class="button">Adicionar</button>
+      <button class="button2">Resetar</button>
+    </div>
+
+    <script>
+      let nomes = ["Diego", "Gabriel", "Lucas"];
+      let btnElement = document.querySelector(".button");
+      let btnElement2 = document.querySelector(".button2");
+
+      for (let i = 0; i < nomes.length; i++) {
+        let newUl = document.createElement("li");
+        newUl.appendChild(document.createTextNode(nomes[i]));
+        newUl.setAttribute("id", i);
+        newUl.classList.add("lista");
+        document.body.appendChild(newUl);
+      }
+      btnElement.onclick = () => {
+        let j = nomes.length - 1;
+        let input = document.querySelector(".input");
+        let novoItem = document.createElement("li");
+
+        novoItem.appendChild(document.createTextNode(input.value));
+        novoItem.setAttribute("id", j);
+        novoItem.classList.add("lista");
+        document.body.appendChild(novoItem);
+        j++;
+        input.value = null;
+      };
+
+      btnElement2.onclick = () => {
+        let Ul = document.querySelector(".lista");
+        if (Ul) {
+          Ul.parentNode.removeChild(Ul);
+        }
+      };
+    </script>
+  </body>
+</html>
